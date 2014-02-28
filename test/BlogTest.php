@@ -47,6 +47,10 @@ class BlogTest extends TumblrTest
             array(function ($c) { $c->getSubmissionPosts('b.n'); }, 'GET', 'v2/blog/b.n/posts/submission', null),
             array(function ($c) { $c->getSubmissionPosts('b.n', array('limit' => 10)); }, 'GET', 'v2/blog/b.n/posts/submission', array('limit' => 10)),
 
+            // bool conversion
+            array(function ($c) { $c->getBlogPosts('b.n', array('reblog_info' => true)); }, 'GET', 'v2/blog/b.n/posts', array('reblog_info' => 'true', 'api_key' => API_KEY)),
+            array(function ($c) { $c->getBlogPosts('b.n', array('reblog_info' => false)); }, 'GET', 'v2/blog/b.n/posts', array('reblog_info' => 'false', 'api_key' => API_KEY))
+
         );
     }
 

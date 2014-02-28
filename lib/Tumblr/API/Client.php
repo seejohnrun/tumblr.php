@@ -472,6 +472,14 @@ class Client
             );
         }
 
+        if ($options) {
+            foreach ($options as $key => $value) {
+                if (is_bool($value)) {
+                    $options[$key] = $value ? 'true' : 'false';
+                }
+            }
+        }
+
         return $this->requestHandler->request($method, $path, $options);
     }
 
